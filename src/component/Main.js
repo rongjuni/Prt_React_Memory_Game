@@ -5,22 +5,16 @@ import './Main.css'
 
 function Main(){
         
-    const maxScore = React.useMemo(() => {
-        return Math.floor(Math.random() * 10 ) + 1
-     }, []);
-
-     let [arrayCollection, setArrayCollection] = useState(0);
-     let [newNum, setNewNum] = useState(0);    
+    const maxScore = Math.floor(Math.random() * 10 ) + 1;
+    let [arrayCollection, setArrayCollection] = useState([]);
+    let [newNum, setNewNum] = useState(0);    
      
      
-     React.useEffect(() => {
-        setArrayCollection(maxScore)
-        setNewNum(maxScore)
-     }, [maxScore])
-    
+    console.log(maxScore);
 
     return(
         <div className='mainDiv'>
+            
             <div className='MainLeftBox'> 
                 <p className='numberSection'>
                     {NumberInKorean(newNum)}
@@ -45,7 +39,6 @@ function Main(){
 function SeenYes(props){
     return(
         <button className='button' onClick={ ()=>{
-
             let newRandNum = Math.floor(Math.random() * 10 ) + 1;
             // {
             //     props.arrayCollection.find( (ele) => {
@@ -67,7 +60,7 @@ function SeenNo(props){
     return(
     <button className='button' onClick={ ()=>{
         let newRandNum = Math.floor(Math.random() * 10 ) + 1;
-
+        console.log('test')
         // {
         //     props.arrayCollection.find( (ele) => {
         //         console.log(ele = newRandNum)
@@ -75,7 +68,6 @@ function SeenNo(props){
         //     ?alert('done')
         //     :null
         // }
-
         props.arrayCollection.push(newRandNum);
         // console.log(props.arrayCollection);
         props.setNewNum(newRandNum);
