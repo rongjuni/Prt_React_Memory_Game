@@ -1,0 +1,33 @@
+.mainDiv{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.numberSection{
+    background-color: skyblue;
+    margin:0 auto;
+    font-size: 1.5rem;
+}
+
+.MainLeftBox{
+    text-align: center;
+    background-color:antiquewhite;
+    width: calc(300px - 4vmin);
+    height: calc(300px - 4vmin);
+}
+
+.MainRightBox{
+    text-align: center;
+    width: calc(300px - 4vmin);
+    height: calc(300px - 4vmin);
+}
+
+.colorCard{
+    background-color:yellow;
+    border-radius: 5px bold black;
+}
+
+.button {
+    margin: auto 20px;
+}

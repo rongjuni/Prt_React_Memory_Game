@@ -1,0 +1,24 @@
+.header{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        background-color: rgb(2, 1, 85);
+        color: white;
+}
+
+
+.score_board{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+.leftBox{
+    padding-left: 20%;
+    padding-bottom: 30px;
+}
+
+.rightBox{
+    padding-right: 20%;
+}
