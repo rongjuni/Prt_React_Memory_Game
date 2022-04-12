@@ -2,12 +2,40 @@
 import React, { useState, Component } from "react";
 import "./Main.css";
 
-function Main() {
+function Main(props) {
   const maxScore = Math.floor(Math.random() * 10) + 1;
-  let [arrayCollection, setArrayCollection] = useState([maxScore]);
   let [newNum, setNewNum] = useState(maxScore);
+  let [arrayCollection, setArrayCollection] = useState([]);
 
-  console.log(maxScore);
+  const handleClick = (event, answer) => {
+    if (!arrayCollection.includes(newNum)) {
+      if (answer == "no") {
+        props.setScore(props.score + 1);
+        console.log("correctly said no");
+        console.log(arrayCollection);
+      } else {
+        props.setScore(0);
+        console.log("incorrectly said yes");
+        console.log(arrayCollection);
+      }
+      setArrayCollection([...arrayCollection, newNum]);
+    } else {
+      if (answer == "yes") {
+        props.setScore(props.score + 1);
+        console.log("correctly said yes");
+        console.log(arrayCollection);
+      } else {
+        props.setScore(0);
+        console.log("incorrectly said no");
+        console.log(arrayCollection);
+      }
+    }
+
+    let newRandNum = Math.floor(Math.random() * 10) + 1;
+    setNewNum(newRandNum);
+  };
+
+  console.log(arrayCollection);
 
   return (
     <div className="mainDiv">
@@ -25,58 +53,24 @@ function Main() {
           Have you seen this number yet?
         </p>
         <div>
-          <Button onClick={handleClick(e, 'yes')}> YES </Button>
-          <Button onClick={handleClick(e, 'no')}> NO </Button>
+          <Button onClick={(e) => handleClick(e, "yes")}> YES </Button>
+          <Button onClick={(e) => handleClick(e, "no")}> NO </Button>
+        </div>
+        <div style={ {marginTop:20, fontSize:20} }>
+            {props.score}
         </div>
       </div>
     </div>
   );
-}
 
-function Button(props) {
-  return (
-    <button className="button" onClick={props.onClick}>
-      {props.children}
-    </button>
-  );
-}
-
-const handleClick = (event, answer) => {
-  if (!arrayCollection.includes(newNum)) {
-    if (answer == "no") {
-      console.log("correctly said no");
-    } else {
-      console.log("incorrectly said yes");
-    }
-
-    setArrayCollection([...arrayCollection, newNum]);
-  } else {
-    if (answer == "yes") {
-      console.log("correctly said yes");
-    } else {
-      console.log("incorrectly said no");
-    }
+  function Button(props) {
+    return (
+      <button className="button" onClick={props.onClick}>
+        {props.children}
+      </button>
+    );
   }
-
-  let newRandNum = Math.floor(Math.random() * 10) + 1;
-  setNewNum(newRandNum);
-};
-
-//   if(answer=='yes'){
-//             if(arrayCollection.include(maxScore)){
-//                 console.log('Correct yes');
-//             }else{
-//                 console.log('Wrong yes');
-//             }
-//         }else{
-//             if(answer='no'){
-//                 console.log('Correct No');
-//             }else{
-//                 console.log('Incorrect');
-//         }
-//     }
-
-// }
+} // finishing line //
 
 function NumberInKorean(newNum) {
   switch (newNum) {
