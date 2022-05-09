@@ -1,26 +1,45 @@
 .mainDiv{
+    margin-top: 30px;
     display: flex;
     justify-content: center;
     
 }
 
 .numberSection{
-    background-color: skyblue;
-    margin:0 auto;
-    font-size: 1.5rem;
+    margin:auto;
+    font-size: 2rem;
+    font: bold;
 }
 
 .MainLeftBox{
     text-align: center;
-    background-color:antiquewhite;
-    width: calc(300px - 4vmin);
-    height: calc(300px - 4vmin);
+    width: calc(300px - 3vmin);
+    height: calc(300px - 3vmin);
+    border: 0.5px solid black;
+    margin: 10px;
+    box-shadow: 5px 10px #888888;
 }
 
 .MainRightBox{
     text-align: center;
-    width: calc(300px - 4vmin);
-    height: calc(300px - 4vmin);
+    width: calc(300px - 3vmin);
+    height: calc(300px - 3vmin);
+    border: 0.5px solid black;
+    margin: 10px;
+    box-shadow: 5px 10px #888888;
+    font-size: large;
+}
+
+.MainRightBox p {
+    margin-top: 20%;
+}
+
+.numberSection{
+    margin-top: 30%;
+}
+
+.buttonClass{
+    margin-top: 5%;
 }
 
 .colorCard{

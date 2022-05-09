@@ -3,61 +3,67 @@ import React, { useState, Component } from "react";
 import "./Main.css";
 
 function Main(props) {
+    // Generating random number
   const maxScore = Math.floor(Math.random() * 10) + 1;
+  
   let [newNum, setNewNum] = useState(maxScore);
+    
+  // Empty array to save generated number to check if number was previously generate
   let [arrayCollection, setArrayCollection] = useState([]);
 
+  // console.log(maxScore);
+  // console.log(newNum);
+
   const handleClick = (event, answer) => {
-    if (!arrayCollection.includes(newNum)) {
+    // if Array does not include new number
+    if ( !arrayCollection.includes(newNum) ) {
+      
+      // when correctly said no
       if (answer == "no") {
         props.setScore(props.score + 1);
-        console.log("correctly said no");
-        console.log(arrayCollection);
-      } else {
+        setArrayCollection([...arrayCollection, newNum]);
+      } 
+      
+      // when incorrectly said yes
+      else {
         props.setScore(0);
-        console.log("incorrectly said yes");
-        console.log(arrayCollection);
+        setArrayCollection([]);
       }
-      setArrayCollection([...arrayCollection, newNum]);
-    } else {
+    } else if ( arrayCollection.includes(newNum) ) {
+
+      // when correctly said yes
       if (answer == "yes") {
         props.setScore(props.score + 1);
-        console.log("correctly said yes");
-        console.log(arrayCollection);
-      } else {
+        setArrayCollection([...arrayCollection, newNum]);
+      }
+      
+      // When incorrectly said no
+      else {
         props.setScore(0);
-        console.log("incorrectly said no");
-        console.log(arrayCollection);
+        setArrayCollection([]);
       }
     }
 
+    // Generate new number and set new value for next question
     let newRandNum = Math.floor(Math.random() * 10) + 1;
     setNewNum(newRandNum);
   };
 
-  console.log(arrayCollection);
+  console.log('If you know how to check developer tool, this is the cheat sheet',arrayCollection);
 
   return (
     <div className="mainDiv">
       <div className="MainLeftBox">
-        <p className="numberSection">{NumberInKorean(newNum)}</p>
-        <div className="colorCard"></div>
+        <p className="numberSection">
+          {NumberInKorean(newNum)}
+        </p>
       </div>
 
       <div className="MainRightBox">
-        <p
-          style={{
-            content: "center",
-          }}
-        >
-          Have you seen this number yet?
-        </p>
-        <div>
+         <p> Have you seen this number yet? </p>
+        <div className='buttonClass'>
           <Button onClick={(e) => handleClick(e, "yes")}> YES </Button>
           <Button onClick={(e) => handleClick(e, "no")}> NO </Button>
-        </div>
-        <div style={ {marginTop:20, fontSize:20} }>
-            {props.score}
         </div>
       </div>
     </div>

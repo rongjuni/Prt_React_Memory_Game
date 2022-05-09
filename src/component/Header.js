@@ -15,8 +15,8 @@ function Header(props){
 
 
             <div className="score_board">
-                <span className='leftBox'> SCORE: {props.score} </span>
-                <span className='rightBox'> BEST SCORE: {props.bestScore} </span>
+                <span className='leftBox'> CURRENT SCORE : {props.score} </span>
+                <span className='rightBox'> BEST SCORE : {props.bestScore} </span>
             </div>
         </div>
     )
